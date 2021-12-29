@@ -38,7 +38,7 @@ $(function () {
             data: { username: $('.reg-box [name=username]').val(), password: $('.reg-box [name=password]').val() },
             success: function (res) {
                 console.log(res);
-                if (res.status !== 0) {
+                if (res.code !== 0) {
                     //layui.layer的内置提醒框
                     layer.msg(res.message);
                 } else {
@@ -62,7 +62,7 @@ $(function () {
             data: $(this).serialize(),
             success: function (res) {
                 console.log(res);
-                if (res.status !== 0) {
+                if (res.code !== 0) {
                     return layer.msg('账号或者密码错误')
                 }
                 layer.msg('登陆成功');

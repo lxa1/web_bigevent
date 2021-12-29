@@ -29,7 +29,7 @@ function getUserInfo() {
         url: '/my/userinfo',
         success: function (res) {
             console.log(res);
-            if (res.status !== 0) {
+            if (res.code !== 0) {
                 return layui.layer.msg('获取用户信息失败');
             }
             //调用渲染用户头像函数
@@ -53,4 +53,8 @@ function renderAvatar(user) {
         var first = name[0].toUpperCase();
         $('.text-avatar').html(first).show();
     }
+}
+
+function btnPubClick() {
+    $('#art_pub').click();
 }

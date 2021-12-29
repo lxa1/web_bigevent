@@ -7,12 +7,12 @@ $(function () {
             /^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格'
         ],
         samePwd: function (value) {
-            if (value === $('.layui-form [name=oldPwd]').val()) {
+            if (value === $('.layui-form [name=old_pwd]').val()) {
                 return '与新密码相同';
             }
         },
         repsd: function (value) {
-            if (value !== $('.layui-form [name=newPwd]').val()) {
+            if (value !== $('.layui-form [name=new_pwd]').val()) {
                 return '两次密码不一致';
             }
         }
@@ -28,12 +28,12 @@ $(function () {
     //定义请求更新函数
     function updatePwd() {
         $.ajax({
-            method: 'POST',
+            method: 'PATCH',
             url: '/my/updatepwd',
             data: $('.layui-form').serialize(),
             success: function (res) {
                 console.log(res);
-                if (res.status !== 0) {
+                if (res.code !== 0) {
                     return layer.msg(res.message)
                 }
                 layer.msg('修改密码成功');

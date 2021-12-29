@@ -23,7 +23,7 @@ $(function () {
             method: 'GET',
             url: '/my/userinfo',
             success: function (res) {
-                if (res.status !== 0) {
+                if (res.code !== 0) {
                     return layui.layer.msg('获取用户信息失败');
                 }
                 form.val('userInfo', res.data);
@@ -42,7 +42,7 @@ $(function () {
     $('#user_info').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
-            method: 'POST',
+            method: 'PUT',
             url: '/my/userinfo',
             data: {
                 id: $('#user_info [name=id]').val(),
@@ -50,7 +50,7 @@ $(function () {
                 email: $('#user_info [name=email]').val()
             },
             success: function (res) {
-                if (res.status !== 0) {
+                if (res.code !== 0) {
                     return layer.msg('更新用户信息失败')
                 }
                 layer.msg('更新用户信息成功');
